@@ -1,10 +1,16 @@
+* {
+    font-size: x-large;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
     background-color: #C8D0D2;
-    margin: 0;
+    margin: 2;
   }
   
   .container {
-    max-width: 900px;
+    max-width: 100%;
     margin: 1rem 2rem;
   }
   
@@ -46,11 +52,12 @@ body {
   .card-grid {
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
     gap: 1rem;
   }
   
   .card {
+    max-height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
