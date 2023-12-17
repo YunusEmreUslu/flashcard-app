@@ -1,34 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, /* useEffect */ } from "react";
 import FlashcardList from "./FlashcardList";
+import SAMPLE_FLASHCARDS from "./sampleFlashcards"
+import './app.css'
 
 function App() {
-  const [flashcards, setFlashcards] = useState(SAMPLE_FLASHCARDS)
-  return (
-    <FlashcardList flashcards={flashcards} />
+  const [flashcards, /* setFlashcards */] = useState(SAMPLE_FLASHCARDS)
+
+  let currentIndex = SAMPLE_FLASHCARDS.length,  randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex > 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [SAMPLE_FLASHCARDS[currentIndex], SAMPLE_FLASHCARDS[randomIndex]] = [
+      SAMPLE_FLASHCARDS[randomIndex], SAMPLE_FLASHCARDS[currentIndex]];
+  }
+
+ return (
+    <div className="container"> 
+      <FlashcardList flashcards={flashcards} />
+    </div>
   );
 }
 
-const SAMPLE_FLASHCARDS = [
-  {
-    id: 1,
-    question: '2 + 2 = ?',
-    answer: '4',
-    options: [
-      '2',
-      '3',
-      '4',
-    ]
-  },
-  {
-    id: 2,
-    question: 'Naber?',
-    answer: '5',
-    options: [
-      '2',
-      '3',
-      '5',
-    ]
-  }
-]
+
 
 export default App;
